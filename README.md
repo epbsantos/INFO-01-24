@@ -4,7 +4,7 @@ Infográfico sobre [educação ambiental](http://www.planalto.gov.br/ccivil_03/l
 ## Ideias e sugestão:
 - Seguir o código desta [video-aula](https://www.youtube.com/watch?v=wy_fSStEgMs)
 
-- [] Criar o mapa do lago de [toledo 2d](https://www.google.com/maps/@-24.7221022,-53.7450963,167m/data=!3m1!1e3?entry=ttu)
-- [] Colocar pontos de interação no mapa, com informações de educação ambiental regional ??? ou estadual ???.
-- [] Outros mapas ???
-- [] carregar mais mídias (além do texto e link) ???
+- [ ] Criar o mapa do lago de [toledo 2d](https://www.google.com/maps/@-24.7221022,-53.7450963,167m/data=!3m1!1e3?entry=ttu)
+- [ ] Colocar pontos de interação no mapa, com informações de educação ambiental regional ??? ou estadual ???.
+- [ ] Outros mapas ???
+- [ ] carregar mais mídias (além do texto e link) ???

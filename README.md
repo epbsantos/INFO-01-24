@@ -9,3 +9,10 @@ Infográfico sobre [educação ambiental](http://www.planalto.gov.br/ccivil_03/l
 - [ ] Escolha de personagem ???
 - [ ] Outros mapas ???
 - [ ] carregar mais mídias (além do texto e link) ???
+
+
+## Assets
+- https://kenney.nl/assets/kenney-fonts
+- https://kenney.nl/assets/map-pack
+- **https://kenney.nl/assets/rpg-urban-pack**
+- https://kenney.nl/assets/pico-8-city

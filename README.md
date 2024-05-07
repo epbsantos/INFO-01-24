@@ -16,3 +16,7 @@ Infográfico sobre [educação ambiental](http://www.planalto.gov.br/ccivil_03/l
 - https://kenney.nl/assets/map-pack
 - **https://kenney.nl/assets/rpg-urban-pack**
 - https://kenney.nl/assets/pico-8-city
+
+## Dependências
+- [vite](https://vitejs.dev/)
+- [kaboom](https://kaboomjs.com/)

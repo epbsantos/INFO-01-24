@@ -3,10 +3,23 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "mapa1.json",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "mapa1.json": {
+            "scale": 0.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 346,
+                "y": 451
+            }
+        },
+        "tilemap_packed.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1.5
+        }
     },
     "last.imagePath": "/home/aluno/Documents/front2/info",
     "map.height": 50,
@@ -15,9 +28,13 @@
     "map.tileWidth": 16,
     "map.width": 50,
     "openFiles": [
+        "mapa1.json",
+        "tilemap_packed.tsx"
     ],
     "project": "mapa1.tiled-project",
     "recentFiles": [
+        "tilemap_packed.tsx",
+        "mapa1.json"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

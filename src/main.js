@@ -16,7 +16,8 @@ k.loadSprite("char", "./char.png", {
   },
 });
 
-k.loadSprite("map", "./mapa1.png");
+k.loadSprite("map1", "./mapa1.png");
+k.loadSprite("map2", "./mapa2.png");
 
 k.setBackground(k.Color.fromHex("#59b6d8"));
 
@@ -24,7 +25,20 @@ k.scene("main", async () => {
   const mapData = await (await fetch("./mapa1.json")).json();
   const layers = mapData.layers;
 
-  const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
+  const map1 = k.add([
+    k.sprite("map1"), 
+    k.pos(0), 
+    k.z(0),
+    k.scale(scaleFactor)
+  ]);
+
+  const details = k.add([
+    k.sprite("map2"), 
+    k.pos(0), 
+    k.z(2),
+    k.scale(scaleFactor)
+  ]);
+  
 
   const player = k.make([
     k.sprite("char", { anim: "idle-down" }),
@@ -35,6 +49,7 @@ k.scene("main", async () => {
     k.anchor("center"),
     k.pos(),
     k.scale(scaleFactor),
+    k.z(1),
     {
       speed: 200,
       direction: "down",
@@ -44,9 +59,9 @@ k.scene("main", async () => {
   ]);
 
   for (const layer of layers) {
-    if (layer.name === "agua") {
+    if (layer.name === "boundaries") {
       for (const boundary of layer.objects) {
-        map.add([
+        map1.add([
           k.area({
             shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
           }),
@@ -73,8 +88,8 @@ k.scene("main", async () => {
       for (const entity of layer.objects) {
         if (entity.name === "player") {
           player.pos = k.vec2(
-            (map.pos.x + entity.x) * scaleFactor,
-            (map.pos.y + entity.y) * scaleFactor
+            (map1.pos.x + entity.x) * scaleFactor,
+            (map1.pos.y + entity.y) * scaleFactor
           );
           k.add(player);
           continue;
@@ -125,14 +140,14 @@ k.scene("main", async () => {
     }
 
     if (Math.abs(mouseAngle) > upperBound) {
-      player.flipX = false;
+      player.flipX = true;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
       player.direction = "right";
       return;
     }
 
     if (Math.abs(mouseAngle) < lowerBound) {
-      player.flipX = true;
+      player.flipX = false;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
       player.direction = "left";
       return;
@@ -176,7 +191,7 @@ k.scene("main", async () => {
 
     if (player.isInDialogue) return;
     if (keyMap[0]) {
-      player.flipX = false;
+      player.flipX = true;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
       player.direction = "right";
       player.move(player.speed, 0);
@@ -184,7 +199,7 @@ k.scene("main", async () => {
     }
 
     if (keyMap[1]) {
-      player.flipX = true;
+      player.flipX = false;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
       player.direction = "left";
       player.move(-player.speed, 0);

@@ -1,6 +1,7 @@
 import { dialogueData, scaleFactor } from "./constants";
-import { k } from "./kaboomCtx";
 import { displayDialogue, setCamScale } from "./utils";
+import { k } from "./kaboomCtx";
+
 
 
 k.loadSprite("char", "./char.png", {
@@ -16,13 +17,24 @@ k.loadSprite("char", "./char.png", {
   },
 });
 
-k.loadSprite("map1", "./mapa1.png");
-k.loadSprite("map2", "./mapa2.png");
+k.loadSprite("map1", "./mapa-v1.png");
+k.loadSprite("map2", "./mapa-v1-topo.png");
+
+k.loadSprite("map3", "./mapa-v1-brilho.png", {
+  sliceX: 2,
+  sliceY: 1,
+  anims: {
+    
+    "default": { from: 0, to: 1, loop: true, speed: 3 },
+    
+  },
+});
+
 
 k.setBackground(k.Color.fromHex("#59b6d8"));
 
 k.scene("main", async () => {
-  const mapData = await (await fetch("./mapa1.json")).json();
+  const mapData = await (await fetch("./mapa-3.json")).json();
   const layers = mapData.layers;
 
   const map1 = k.add([
@@ -36,6 +48,13 @@ k.scene("main", async () => {
     k.sprite("map2"), 
     k.pos(0), 
     k.z(2),
+    k.scale(scaleFactor)
+  ]);
+
+  const light = k.add([
+    k.sprite("map3", { anim: "default" }), 
+    k.pos(0), 
+    k.z(3),
     k.scale(scaleFactor)
   ]);
   
@@ -220,5 +239,6 @@ k.scene("main", async () => {
     }
   });
 });
+
 
 k.go("main");

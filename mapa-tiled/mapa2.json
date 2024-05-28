@@ -523,6 +523,28 @@
                  "width":0.666666666666686,
                  "x":509.333333333333,
                  "y":142
+                }, 
+                {
+                 "height":7.5,
+                 "id":106,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":10,
+                 "x":579,
+                 "y":405.5
+                }, 
+                {
+                 "height":9.5,
+                 "id":108,
+                 "name":"placa3",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":11.5,
+                 "x":578,
+                 "y":404
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1591,7 +1613,7 @@
          "y":0
         }],
  "nextlayerid":29,
- "nextobjectid":106,
+ "nextobjectid":109,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

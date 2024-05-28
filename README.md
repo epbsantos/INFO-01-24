@@ -1,6 +1,8 @@
 # INFO-01-24
 Infográfico sobre [educação ambiental](http://www.planalto.gov.br/ccivil_03/leis/L9795.htm) na disciplina de front2, no curso de TSI - UTFPR-TD
 
+[PRIMEIRA VERSÃO](https://epbsantos.github.io/INFO-01-24/)
+
 ## Ideias e sugestão:
 - Seguir o código desta [video-aula](https://www.youtube.com/watch?v=wy_fSStEgMs)
 

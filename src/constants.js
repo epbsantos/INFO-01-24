@@ -2,9 +2,9 @@ export const scaleFactor = 2;
 
 export const dialogueData = {
 
-  pl1: 'Bem vindo ao inforgŕafico da turma de front2 do curso de TSI, UTFPR Toledo PR. Ande a vontade',
+  pl1: 'Bem vindo ao infogŕafico da turma de front2 do curso de TSI, UTFPR Toledo PR. Ande a vontade',
 
-  pl2: 'Este infografico trata-se sobre a como podemos possuir uma concientização ambiental melhor. ',
+  pl2: 'Este infogŕafico trata-se sobre como podemos possuir uma conscientização ambiental melhor. ',
 
   pl3: 'O crescimento das emissões de gases de efeito estufa contribui para as mudanças climáticas e agrava o problema do aquecimento global. A má qualidade do ar representa riscos graves para a saúde humana.', 
 

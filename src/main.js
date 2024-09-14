@@ -1,5 +1,5 @@
 import { dialogueData, scaleFactor } from "./constants";
-import { displayDialogue, setCamScale } from "./utils";
+import { displayDialogue, setCamScale } from "./utils.js";
 import { k } from "./kaboomCtx";
 
 k.loadSprite("char", "./char.png", {
@@ -34,7 +34,7 @@ k.loadSprite("map3", "./mapa-v1-brilho.png", {
   sliceX: 2,
   sliceY: 1,
   anims: {
-    "default": { from: 0, to: 1, loop: true, speed: 3 },
+    default: { from: 0, to: 1, loop: true, speed: 3 },
   },
 });
 
@@ -44,26 +44,11 @@ k.scene("main", async () => {
   const mapData = await (await fetch("./mapa-3.json")).json();
   const layers = mapData.layers;
 
-  const map1 = k.add([
-    k.sprite("map1"), 
-    k.pos(0), 
-    k.z(0),
-    k.scale(scaleFactor)
-  ]);
+  const map1 = k.add([k.sprite("map1"), k.pos(0), k.z(0), k.scale(scaleFactor)]);
 
-  const details = k.add([
-    k.sprite("map2"), 
-    k.pos(0), 
-    k.z(2),
-    k.scale(scaleFactor)
-  ]);
+  const details = k.add([k.sprite("map2"), k.pos(0), k.z(2), k.scale(scaleFactor)]);
 
-  const light = k.add([
-    k.sprite("map3", { anim: "default" }), 
-    k.pos(0), 
-    k.z(3),
-    k.scale(scaleFactor)
-  ]);
+  const light = k.add([k.sprite("map3", { anim: "default" }), k.pos(0), k.z(3), k.scale(scaleFactor)]);
 
   const player = k.add([
     k.sprite("char", { anim: "idle-down" }),
@@ -82,38 +67,35 @@ k.scene("main", async () => {
     },
     "player",
   ]);
-  
-  // Supondo que `roadBounds` represente os limites da estrada
-const roadBounds = {
-  x: 100, // coordenada x do canto superior esquerdo
-  y: 200, // coordenada y do canto superior esquerdo
-  width: 300, // largura da estrada
-  height: 100, // altura da estrada
-};
 
-const newPlayer = k.add([
-  k.sprite("newChar", { anim: "idle-down" }),
-  k.area({
-    shape: new k.Rect(k.vec2(0, 3), 16, 16),
-  }),
-  k.body(),
-  k.anchor("center"),
-  k.pos(
-    roadBounds.x + Math.random() * roadBounds.width, // coordenada x aleatória dentro dos limites da estrada
-    roadBounds.y + Math.random() * roadBounds.height // coordenada y aleatória dentro dos limites da estrada
-  ),
-  k.scale(scaleFactor),
-  k.z(1),
-  {
-    speed: 200,
-    direction: "down",
-    isInDialogue: false,
-  },
-  "newPlayer",
-]);
+  // Supondo que roadBounds represente os limites da estrada
+  const roadBounds = {
+    x: 100, // coordenada x do canto superior esquerdo
+    y: 200, // coordenada y do canto superior esquerdo
+    width: 300, // largura da estrada
+    height: 100, // altura da estrada
+  };
 
-  
-  
+  const newPlayer = k.add([
+    k.sprite("newChar", { anim: "idle-down" }),
+    k.area({
+      shape: new k.Rect(k.vec2(0, 3), 16, 16),
+    }),
+    k.body(),
+    k.anchor("center"),
+    k.pos(
+      roadBounds.x + Math.random() * roadBounds.width, // coordenada x aleatória dentro dos limites da estrada
+      roadBounds.y + Math.random() * roadBounds.height // coordenada y aleatória dentro dos limites da estrada
+    ),
+    k.scale(scaleFactor),
+    k.z(1),
+    {
+      speed: 200,
+      direction: "down",
+      isInDialogue: false,
+    },
+    "newPlayer",
+  ]);
 
   for (const layer of layers) {
     if (layer.name === "boundaries") {
@@ -129,18 +111,12 @@ const newPlayer = k.add([
 
         player.onCollide(boundary.name, () => {
           player.isInDialogue = true;
-          displayDialogue(
-            dialogueData[boundary.name],
-            () => (player.isInDialogue = false)
-          );
+          displayDialogue(dialogueData[boundary.name], () => (player.isInDialogue = false));
         });
 
         newPlayer.onCollide(boundary.name, () => {
           newPlayer.isInDialogue = true;
-          displayDialogue(
-            dialogueData[boundary.name],
-            () => (newPlayer.isInDialogue = false)
-          );
+          displayDialogue(dialogueData[boundary.name], () => (newPlayer.isInDialogue = false));
         });
       }
     }
@@ -148,10 +124,7 @@ const newPlayer = k.add([
     if (layer.name === "start") {
       for (const entity of layer.objects) {
         if (entity.name === "player") {
-          player.pos = k.vec2(
-            (map1.pos.x + entity.x) * scaleFactor,
-            (map1.pos.y + entity.y) * scaleFactor
-          );
+          player.pos = k.vec2((map1.pos.x + entity.x) * scaleFactor, (map1.pos.y + entity.y) * scaleFactor);
         }
       }
     }
@@ -205,19 +178,9 @@ const newPlayer = k.add([
   }
 
   k.onKeyDown((key) => {
-    const playerKeyMap = [
-      k.isKeyDown("right"),
-      k.isKeyDown("left"),
-      k.isKeyDown("up"),
-      k.isKeyDown("down"),
-    ];
+    const playerKeyMap = [k.isKeyDown("right"), k.isKeyDown("left"), k.isKeyDown("up"), k.isKeyDown("down")];
 
-    const newPlayerKeyMap = [
-      k.isKeyDown("d"),
-      k.isKeyDown("a"),
-      k.isKeyDown("w"),
-      k.isKeyDown("s"),
-    ];
+    const newPlayerKeyMap = [k.isKeyDown("d"), k.isKeyDown("a"), k.isKeyDown("w"), k.isKeyDown("s")];
 
     handleMovement(player, playerKeyMap);
     handleMovement(newPlayer, newPlayerKeyMap);
@@ -244,9 +207,6 @@ const newPlayer = k.add([
     stopAnims(player);
     stopAnims(newPlayer);
   });
-
-
 });
-
 
 k.go("main");

@@ -1,4 +1,9 @@
 export function displayDialogue(text, onDisplayEnd) {
+  if (typeof text !== "string" || !text.length) {
+    console.error("Texto inválido fornecido:", text);
+    return;
+  }
+
   const dialogueUI = document.getElementById("textbox-container");
   const dialogue = document.getElementById("dialogue");
 
